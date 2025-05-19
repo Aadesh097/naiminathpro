@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naiminath Ayurveda</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .text-sm {
+            font-size: 0.875rem;
+        }
+        .flex {
+            display: flex;
+        }
+        .justify-between {
+            justify-content: space-between;
+        }
+        .items-center {
+            align-items: center;
+        }
+        .gap-1 {
+            gap: 0.25rem;
+        }
+        .gap-2 {
+            gap: 0.5rem;
+        }
+        .gap-4 {
+            gap: 1rem;
+        }
+        .gap-6 {
+            gap: 1.5rem;
+        }
+        .px-2 {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        .py-1 {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+        }
+        .py-2 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .bg-yellow-300 {
+            background-color: #fde047;
+        }
+        .bg-yellow-400 {
+            background-color: #facc15;
+        }
+        .bg-yellow-500 {
+            background-color: #eab308;
+        }
+        .bg-white {
+            background-color: white;
+        }
+        .bg-gray-100 {
+            background-color: #f3f4f6;
+        }
+        .text-black {
+            color: #000;
+        }
+        .text-red-600 {
+            color: #dc2626;
+        }
+        .text-green-600 {
+            color: #16a34a;
+        }
+        .text-2xl {
+            font-size: 1.5rem;
+        }
+        .font-bold {
+            font-weight: 700;
+        }
+        .font-semibold {
+            font-weight: 600;
+        }
+        .font-medium {
+            font-weight: 500;
+        }
+        .tracking-widest {
+            letter-spacing: 0.1em;
+        }
+        .underline {
+            text-decoration: underline;
+        }
+        .border {
+            border: 1px solid #e5e7eb;
+        }
+        .rounded {
+            border-radius: 0.25rem;
+        }
+        .shadow {
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        }
+        .shadow-md {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .relative {
+            position: relative;
+        }
+        .absolute {
+            position: absolute;
+        }
+        .mt-1 {
+            margin-top: 0.25rem;
+        }
+        .w-40 {
+            width: 10rem;
+        }
+        .z-10 {
+            z-index: 10;
+        }
+        .capitalize {
+            text-transform: capitalize;
+        }
+        .block {
+            display: block;
+        }
+        .hover\:bg-yellow-500:hover {
+            background-color: #eab308;
+        }
+        .hover\:bg-gray-100:hover {
+            background-color: #f3f4f6;
+        }
+        
+        /* Dropdown styles */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.25rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            z-index: 10;
+            width: 10rem;
+            margin-top: 0.25rem;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        img {
+            max-width: 20%;
+            height: auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            height: 100px;
+            width: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: #1a73e8;
+        }
+        
+        /* Mobile Menu Button */
+        #mobile-menu-button {
+            display: none;
+            background: #facc15;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        
+        /* Mobile Menu */
+        #mobile-menu {
+            display: none;
+            width: 100%;
+        }
+        
+        #mobile-menu.active {
+            display: block;
+        }
+        
+        /* PDF Grid Styles */
+        .pdf-section {
+            background-color: #f3f4f6;
+            padding: 2rem 1rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+        }
+        
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            max-width: 80rem;
+            margin: 0 auto;
+        }
+        
+        .pdf-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.2s;
+        }
+        
+        .pdf-link:hover {
+            background-color: #f9fafb;
+        }
+        
+        .pdf-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        
+        .pdf-name {
+            color: #1d4ed8;
+            word-break: break-word;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 2rem 1rem;
+        }
+        
+        .footer-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .footer-column h2 {
+            font-weight: bold;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-aa {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 1.5rem 0;
+            background-color: black;
+        }
+        
+        .footer-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-a {
+            background-color: #001aff;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: left;
+            max-width: 100%;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .text-gray-300 {
+            color: #d1d5db;
+        }
+        
+        .text-cyan-400 {
+            color: #22d3ee;
+        }
+        
+        .text-red-600 {
+            color: #dc2626;
+        }
+        
+        .space-y-1 > * + * {
+            margin-top: 0.25rem;
+        }
+        
+        .space-y-2 > * + * {
+            margin-top: 0.5rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            font-size: 1.25rem;
+            justify-content: center;
+        }
+        
+        .icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+        }
+        
+        /* Responsive Styles */
+        @media (min-width: 640px) {
+            .pdf-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            #mobile-menu-button {
+                display: none;
+            }
+            
+            #mobile-menu {
+                display: block;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .footer-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .pdf-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .header-container {
+                padding: 1rem 2rem;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            /* Top bar adjustments */
+            .bg-yellow-300 {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem;
+                text-align: center;
+                font-size: 0.75rem;
+            }
+            
+            /* Main header adjustments */
+            .flex.justify-between.items-center.px-6.py-4 {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            /* Logo adjustments */
+            .flex.items-center.gap-4 {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            /* Hide desktop nav on mobile */
+            nav.flex.gap-6.text-sm.font-medium.items-center {
+                display: none;
+            }
+            
+            /* Show mobile menu button */
+            #mobile-menu-button {
+                display: block;
+                margin-top: 1rem;
+            }
+            
+            /* Mobile menu styles */
+            #mobile-menu nav {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem 0;
+            }
+            
+            /* Dropdown adjustments for mobile */
+            .dropdown-content {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                border: none;
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+            
+            /* Admission button adjustments */
+            .bg-yellow-400 {
+                width: 100%;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+            
+            /* Font size adjustments */
+            .text-2xl {
+                font-size: 1.25rem;
+            }
+            
+            .section-title {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="text-sm font-sans">
+        <!-- Top Bar -->
+        <div class="bg-yellow-300 text-black flex justify-between px-4 py-2 items-center">
+            <div class="flex gap-4 items-center">
+                <span class="flex items-center gap-1">
+                    ⏱️ Open Hours: 9am to 4pm
+                </span>
+                <span class="flex items-center gap-1">
+                    📧 info@naiminathayurveda.org
+                </span>
+            </div>
+            <div class="flex gap-4 items-center">
+                <span class="flex items-center gap-1">
+                    Admission enquiry: 📞 +91-9528024473
+                </span>
+                <a href="-->>in progress" class="underline text-sm font-semibold">Permission Letter</a>
+            </div>
+        </div>
+
+        <!-- Main Header -->
+        <div class="flex justify-between items-center px-4 py-4 shadow relative bg-white">
+            <!-- Logo -->
+            <div class="flex items-center gap-4">
+                <img src="/naiminath.jpeg" alt="Naiminath Ayurveda" class="h-12">
+                <div>
+                    <div class="text-2xl font-bold text-red-600">Naiminath</div>
+                    <div class="text-green-600 tracking-widest text-sm">A Y U R V E D A</div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden">
+                ☰ Menu
+            </button>
+
+            <!-- Navigation -->
+            <div id="mobile-menu" class="hidden md:block">
+                <nav class="flex gap-6 text-sm font-medium items-center relative">
+                    <a href="in progress">Home</a>
+
+                    <!-- About Dropdown -->
+                    <div class="dropdown relative">
+                        <button class="flex items-center gap-1 capitalize">
+                            about <span>▾</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="-->>in progress" class="block px-4 py-2 hover:bg-gray-100">Our Mission</a>
+                            <a href="-->>in progress" class="block px-4 py-2 hover:bg-gray-100">Leadership</a>
+                            <a href="-->>in progress" class="block px-4 py-2 hover:bg-gray-100">History</a>
+                        </div>
+                    </div>
+
+                    <!-- Hospital Dropdown -->
+                    <div class="dropdown relative">
+                        <button class="flex items-center gap-1 capitalize">
+                            hospital <span>▾</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="-->>in progress" class="block px-4 py-2 hover:bg-gray-100">Departments</a>
+                            <a href="-->>in progress" class="block px-4 py-2 hover:bg-gray-100">Doctors</a>
+                            <a href="-->>in progress" class="block px-4 py-2 hover:bg-gray-100">Appointments</a>
+                        </div>
+                    </div>
+
+                    <!-- College Dropdown -->
+                    <div class="dropdown relative">
+                        <button class="flex items-center gap-1 capitalize">
+                            college <span>▾</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="-->>in progress" class="block px-4 py-2 hover:bg-gray-100">Courses</a>
+                            <a href="-->>in progress" class="block px-4 py-2 hover:bg-gray-100">Faculty</a>
+                            <a href="-->>in progress" class="block px-4 py-2 hover:bg-gray-100">Admissions</a>
+                        </div>
+                    </div>
+
+                    <a href="in progress" class="border px-2 py-1">NCISM</a>
+                    <a href="in progress">Blog</a>
+                    <a href="in progress">Facilities</a>
+                    <a href="in progress">Contact</a>
+                </nav>
+            </div>
+
+            <!-- Admission Button -->
+            <div class="hidden md:block">
+                <button class="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded flex items-center gap-2">
+                    📄 Admission Open
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Section - PDF Grid -->
+    <section class="pdf-section">
+        <h2 class="section-title">REGULATORY INFO - NCISM Mandate</h2>
+
+        <div class="pdf-grid">
+            <a href="https://drive.google.com/file/d/1Flo4ilD6N23natkAXvVy8f-YOD-4nJSN/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon" class="pdf-icon">
+                <span class="pdf-name">BHMS STUDENT 2021-22</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1Fmh4OJ79hPbifUAWU9aDLgqqmbbvA5JV/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon" class="pdf-icon">
+                <span class="pdf-name">M.D. STUDENT LIST 2022-23</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1Fq4KJfrev0PaGqlcjrUPf1kxT48yBF04/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" alt="Biometric icon" class="pdf-icon">
+                <span class="pdf-name">RESULT M D 2022-23</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1FrVDk1-8vYgVe5AbRAj4MyFr_lSOdIvA/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon" class="pdf-icon">
+                <span class="pdf-name">M.D. STUDENT LIST 2021-22</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1FuO2yyJqRtrDnxgs3D4lbn8B2h3KXnNb/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon" class="pdf-icon">
+                <span class="pdf-name">BHMS STUDENT LIST 2022-23</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1FvVpI--hkaDRshQroQV6aPdZV6T8hiuZ/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon" class="pdf-icon">
+                <span class="pdf-name">B.H.M.S STUDENT LIST 2020-21</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1GJAgp5tJdyf6TIcMe5tbqcfbEh85thbp/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" alt="Biometric icon" class="pdf-icon">
+                <span class="pdf-name">BHMS 2022-23 RSULT 1st PROF</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1FyywCn2qOD_TQ6W6XoXykJoYU2mttZfo/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" alt="Biometric icon" class="pdf-icon">
+                <span class="pdf-name">RESULT M.D. 2021-22</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1GN7ex6K5Ke8j7nVU4g0GMt6dVOrU--RF/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" alt="Biometric icon" class="pdf-icon">
+                <span class="pdf-name">B.H.M.S. 2021-22 RESULT 2nd PROF</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1GM7KOnbiqL-TXCqykuNw-ybPFx6Ly5hd/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" alt="Biometric icon" class="pdf-icon">
+                <span class="pdf-name">RESULT M.D 2022-23</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1FxiNZRfDT3I-aFXObApNC_gnLe5Csm0C/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" alt="Biometric icon" class="pdf-icon">
+                <span class="pdf-name">BHMS 2021-22 RESULT 1st PROF</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1HKnwZ918cKVYir0auomedwPPJt36gXxp/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon" class="pdf-icon">
+                <span class="pdf-name">MAHAYOGI GURU GORAKHNATH AYUSH UNIVERSITY</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1GhQrvULXe2uC2N9gzff0rBlx2mfgJtFi/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon" class="pdf-icon">
+                <span class="pdf-name">prospectus(1)</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1GV_VirZXyVFcMAY_0AJp1U5EoOXx6TKm/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon" class="pdf-icon">
+                <span class="pdf-name">NON TEACHING STAFF LIST</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1HLeIzIj1g5iGC6HyczinviEBNqoScZ_K/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon" class="pdf-icon">
+                <span class="pdf-name">Hospital Staff Final 2025</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1HE9obzbN0iRINqH8Y6UeLmOwWGrCVPoI/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon" class="pdf-icon">
+                <span class="pdf-name">Principal Profile- Prof Dr Pradeep kumar</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1HBJcOqQHLwGbCDcmHB1y1-LN6oKv6C3P/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon" class="pdf-icon">
+                <span class="pdf-name">Details of Vice Chancellor Affiliating University</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1H70dOfQbMvF3908FXdP1ZjC6XLLDvNZr/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon" class="pdf-icon">
+                <span class="pdf-name">Details of Teaching Staff</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1H6ZqqY4Q6XsgdkKU2xI2QrH6_Dc4Ksqs/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon" class="pdf-icon">
+                <span class="pdf-name">2020 - OPD and IPD Statistcis</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1GqOGP-Mc2YxzgY4pBFakLYESBrY7zpXK/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon" class="pdf-icon">
+                <span class="pdf-name">2021 - OPD and IPD Statistcis</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1H-CGn92geTA6qJLyEJYP4jfYXC__2Xik/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon" class="pdf-icon">
+                <span class="pdf-name">2022 - OPD and IPD Statistcis</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1H54YJjJ7ZkAgySY9ywwNENc8uZmp8eJS/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon" class="pdf-icon">
+                <span class="pdf-name">2023 - OPD and IPD Statistcis</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1GcWGfnoIvkIxlScTbUHOoiJCdN3TceU_/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="pdf-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon" class="pdf-icon">
+                <span class="pdf-name">2024 - OPD and IPD Statistcis</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <!-- Treatments here-->
+            <div class="footer-column">
+                <h2>Treatments</h2>
+                <ul class="footer-list space-y-1 text-sm text-gray-300">
+                    <li>Abhyangam</li>
+                    <li>Shirodhara</li>
+                    <li>Kashayadhara</li>
+                    <li>Greeva Basti</li>
+                    <li>Janu Basti</li>
+                    <li>Kati Basti</li>
+                    <li>Spine Basti</li>
+                    <li>Kizhi</li>
+                    <li>Mukha Lepam</li>
+                    <li>Netra Tarpanam</li>
+                    <li>Panchakarma</li>
+                </ul>
+            </div>
+
+            <!-- About section-->
+            <div class="footer-column">
+                <h2>About Naiminath Ayurveda</h2>
+                <p class="text-sm text-gray-300">
+                    To provide world class education and treatment, this 100 bedded state of art Ayurvedic Hospital is functional since 2016 where more than 200 patients visit the Outdoor Department every day and around 40 patients are present in the Indoor Department.
+                </p>
+                <div class="social-icons">
+                    <!-- Facebook Icon -->
+                    <svg class="icon" viewBox="0 0 320 512">
+                        <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+                    </svg>
+                    
+                    <!-- Instagram Icon -->
+                    <svg class="icon" viewBox="0 0 448 512">
+                        <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                    </svg>
+                    
+                    <!-- YouTube Icon -->
+                    <svg class="icon" viewBox="0 0 576 512">
+                        <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/>
+                    </svg>
+                    
+                    <!-- Twitter Icon -->
+                    <svg class="icon" viewBox="0 0 512 512">
+                        <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Address section-->
+            <div class="footer-column">
+                <h2>Naiminath Ayurveda</h2>
+                <p class="text-sm text-gray-300 mb-2">
+                    <strong>ADDRESS</strong><br />
+                    N.H. 19, Nawalpura, Kuberpur, Behind Maruti TrueValue Showroom, Etmadpur, Agra – 283202, Uttar Pradesh, India.
+                </p>
+                <ul class="text-sm text-cyan-400 space-y-1">
+                    <li><a href="workinprogress">→ UP BAMS Counselling</a></li>
+                    <li><a href="workinprogress">→ Anti Ragging Committee</a></li>
+                    <li><a href="workinprogress">→ FEES PAYMENT: CLICK HERE TO PAY FEES</a></li>
+                </ul>
+            </div>
+            
+            <!-- Important Links section -->
+            <div class="footer-column">
+                <h2>Important Links</h2>
+                <ul class="text-sm text-red-600 space-y-1">
+                    <li><a href="https://ayush.gov.in/">→ Ministry of AYUSH </a></li>
+                    <li><a href="https://nch.org.in/">→ National Commission for Homoeopathy </a></li>
+                    <li><a href="https://mggaugkp.ac.in/Home.aspx">→ Mahayogi Guru Gorakhnath AYUSH University </a></li>
+                    <li><a href="https://upayushcounseling.upsdc.gov.in/">→ Uttar Pradesh AYUSH Counselling </a></li>
+                    <li><a href="https://ayushup.in/">→ Uttar Pradesh State AYUSH Society </a></li>
+                    <li><a href="https://www.vidyalakshmi.co.in/Students/">→ Vidya Lakshmi Education Loan Portal </a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Contact section -->
+        <div class="footer-aa">
+            <div class="footer-a">
+                <h2>Get In Touch</h2>
+                <div class="text-sm mb-2">
+                    <strong>EMAIL</strong>
+                    <p class="flex items-center text-gray-300">
+                        <svg class="icon mr-2" viewBox="0 0 512 512">
+                            <path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
+                        </svg>
+                        info@naiminathayurveda.org
+                    </p>
+                    <p class="flex items-center text-gray-300">
+                        <svg class="icon mr-2" viewBox="0 0 512 512">
+                            <path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
+                        </svg>
+                        namcagra@gmail.com
+                    </p>
+                </div>
+                <div class="text-sm">
+                    <strong>MOBILE</strong>
+                    <p class="flex items-center text-gray-300">
+                        <svg class="icon mr-2" viewBox="0 0 512 512">
+                            <path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/>
+                        </svg>
+                        +91-8193896320
+                    </p>
+                    <p class="flex items-center text-gray-300">
+                        <svg class="icon mr-2" viewBox="0 0 512 512">
+                            <path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/>
+                        </svg>
+                        +91-9528024473
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            // Toggle mobile menu
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+            });
+            
+            // Mobile dropdown functionality
+            dropdowns.forEach(dropdown => {
+                const button = dropdown.querySelector('button');
+                
+                button.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        dropdown.classList.toggle('active');
+                    }
+                });
+                
+                // Keep desktop hover functionality
+                dropdown.addEventListener('mouseenter', function() {
+                    if (window.innerWidth > 768) {
+                        this.querySelector('.dropdown-content').style.display = 'block';
+                    }
+                });
+                
+                dropdown.addEventListener('mouseleave', function() {
+                    if (window.innerWidth > 768) {
+                        this.querySelector('.dropdown-content').style.display = 'none';
+                    }
+                });
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!mobileMenu.contains(event.target) && event.target !== mobileMenuButton) {
+                    mobileMenu.classList.remove('active');
+                }
+            });
+            
+            // Window resize handler
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
